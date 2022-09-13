@@ -5,7 +5,7 @@
     formData.append("X", x.value);
     formData.append("Y", y.value);
     if (patern.test(x.value) && patern.test(y.value)) {
-        req.open("POST", "http://localhost:52855/mul_handler/", true);
+        req.open("POST", "http://localhost:41201/mul_handler/", true);
         req.onreadystatechange = () => {
             if (req.readyState === 4) {
                 if (req.status === 200) {

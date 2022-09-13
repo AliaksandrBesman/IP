@@ -1,6 +1,8 @@
-﻿using System;
+﻿using LW3.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -8,10 +10,11 @@ namespace LW3.Controllers
 {
     public class DictController : Controller
     {
+        private TelephoneNumberContext telephoneNumberContext = new TelephoneNumberContext();
         // GET: Dict
         public ActionResult Index()
         {
-            return View();
+            return View(telephoneNumberContext.GetAll());
         }
 
         [HttpGet]
@@ -21,33 +24,60 @@ namespace LW3.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddSave()
+        public ActionResult AddSave( TelephoneNumber telephoneNumber)
         {
-            return View();
+
+            telephoneNumberContext.Create(telephoneNumber);
+                return RedirectToAction("Index");
+            
         }
 
         [HttpGet]
-        public ActionResult Update()
+        public ActionResult Update(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            TelephoneNumber telephoneNumber = telephoneNumberContext.Find(id.Value);
+            if (telephoneNumber == null)
+            {
+                return HttpNotFound();
+            }
+            return View(telephoneNumber);
         }
 
         [HttpPost]
-        public ActionResult UpdateSave()
+        public ActionResult UpdateSave(TelephoneNumber telephoneNumber)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                telephoneNumberContext.Update(telephoneNumber);
+                return RedirectToAction("Index");
+            }
+            return View(telephoneNumber);
         }
 
         [HttpGet]
-        public ActionResult Delete()
+        public ActionResult Delete(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            TelephoneNumber telephoneNumber = telephoneNumberContext.Find(id.Value);
+            if (telephoneNumber == null)
+            {
+                return HttpNotFound();
+            }
+            return View(telephoneNumber);
         }
 
-        [HttpPost]
-        public ActionResult DeleteSave()
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteSave(int id)
         {
-            return View();
+            telephoneNumberContext.Delete(id);
+            return RedirectToAction("Index");
         }
 
 

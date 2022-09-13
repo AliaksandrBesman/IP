@@ -1,0 +1,19 @@
+﻿@model TelephoneDictionary.TelephoneNumber
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+@using LW4.Helpers
+
+<h2>Edit</h2>
+
+@ListHelper.UpdateTelephoneNumber(Html, Model, @Html.AntiForgeryToken())
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

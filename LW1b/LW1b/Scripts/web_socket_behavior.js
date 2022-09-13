@@ -21,7 +21,7 @@ function WriteMessage(idspan, txt) {
 
 function exe_start() {
     if (ws == null) {
-        ws = new WebSocket('ws://localhost:56928/Websokets.websocket');
+        ws = new WebSocket('ws://172.16.193.234:41201/LW1b/Websokets.websocket');
         ws.onopen = function () { ws.send('Соединение'); }
         ws.onclose = function (s) { console.log('onclose', s); }
         ws.onmessage = function (evt) { ta.innerHTML += '\n' + evt.data; }

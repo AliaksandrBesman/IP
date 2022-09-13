@@ -5,7 +5,7 @@
     formData.append("parmA", x.value);
     formData.append("parmB", y.value);
     if (patern.test(x.value) && patern.test(y.value)) {
-        req.open("POST", "http://localhost:52855/post_handler/", true);
+        req.open("POST", "http://172.16.193.234:41201/post_handler/", true);
         req.onreadystatechange = () => {
             if (req.readyState === 4) {
                 if (req.status === 200) {

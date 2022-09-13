@@ -5,7 +5,7 @@
     formData.append("parmA", x.value);
     formData.append("parmB", y.value);
     if (patern.test(x.value) && patern.test(y.value)) {
-        req.open("PUT", "http://localhost:52855/put_handler/", true);
+        req.open("PUT", "http://localhost:41201/put_handler/", true);
         req.onreadystatechange = () => {
             if (req.readyState === 4) {
                 if (req.status === 200) {

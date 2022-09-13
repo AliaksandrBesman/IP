@@ -1,0 +1,43 @@
+﻿@model LW3.Models.TelephoneNumber
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add</title>
+</head>
+<body>
+    @using (Html.BeginForm("AddSave","Dict", FormMethod.Post))
+    {
+       <div>
+           <h4>Phone</h4>
+           <hr />
+    
+           <div>
+               @Html.LabelFor(model => model.Name)
+               <div>
+                   @Html.EditorFor(model => model.Name)
+         
+               </div>
+           </div>
+
+           <div>
+               @Html.LabelFor(model => model.PhoneNumber)
+               <div>
+                   @Html.EditorFor(model => model.PhoneNumber)
+               </div>
+           </div>
+
+           <div>
+               <div>
+                   <input type="submit" value="Add" class="btn btn-default" />
+               </div>
+           </div>
+       </div>}
+</body>
+</html>

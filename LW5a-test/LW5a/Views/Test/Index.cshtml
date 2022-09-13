@@ -1,0 +1,21 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        Hello Pidrila
+        @*@Html.RouteLink("Все книги", "Default")*@
+        @Url.RouteUrl(new { controller = "Book", action = "Index", author = "Толстой", id = 10 })
+        @Url.Action("Index", "Book", new { author = "Толстой", id = 10 }, null)
+    </div>
+</body>
+</html>

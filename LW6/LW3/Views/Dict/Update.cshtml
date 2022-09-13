@@ -1,0 +1,43 @@
+﻿@model TelephoneDictionary.TelephoneNumber
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Update</title>
+</head>
+<body>
+    @using (Html.BeginForm("UpdateSave", "Dict", FormMethod.Post))
+    {
+    <div>
+        <h4>Phone</h4>
+        <hr />
+        @Html.HiddenFor(model => model.Id)
+        <div>
+            @Html.LabelFor(model => model.Name)
+            <div>
+                @Html.EditorFor(model => model.Name)
+
+            </div>
+        </div>
+
+        <div>
+            @Html.LabelFor(model => model.PhoneNumber)
+            <div>
+                @Html.EditorFor(model => model.PhoneNumber)
+            </div>
+        </div>
+
+        <div>
+            <div>
+                <input type="submit" value="Update" class="btn btn-default" />
+            </div>
+        </div>
+    </div>}
+</body>
+</html>
